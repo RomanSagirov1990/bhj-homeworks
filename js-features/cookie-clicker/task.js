@@ -1,21 +1,22 @@
-'use strict'
+'use strict';
 
-const cookieImage = document.getElementById("cookie");
-let cookieClick = document.getElementById("clicker__counter");
-let cookieSpeedClick = document.getElementById("clicker__speed__counter");
-let todayTime = Date.now();
-let previousClicks = 0;
+const tastyCookie = document.getElementById('cookie');
+let lastClick = new Date;
 
-cookieImage.onclick = function () {
-   
-    cookieImage.classList.contains('clicker__cookie') ? cookieImage.className = 'new__clicker__cookie' : cookieImage.className = 'clicker__cookie';
-
-    
-    let currentClicks = parseInt(cookieClick.textContent);
-    cookieClick.textContent = currentClicks + 1;
-
-    
-    cookieSpeedClick.textContent = (((Date.now() - todayTime) / 1000) / (currentClicks - previousClicks)).toFixed(2);
-    previousClicks = currentClicks;
+tastyCookie.onclick = function (){
+  const clickCount = document.getElementById('clicker__counter');
+  clickCount.textContent = Number(clickCount.textContent) + 1;
+  if(clickCount.textContent % 2){
+    this.width="210";
+  }else {
+    this.width="200";
+  }
+  let newClick = new Date;
+  if(lastClick !== undefined){
+    const clickSpeed = document.getElementById('clicker__speed');
+    clickSpeed.textContent = (1000 / (newClick - lastClick)).toFixed(2);
+    console.log(newClick - lastClick);
+  }
+  lastClick = new Date;
 
 };
