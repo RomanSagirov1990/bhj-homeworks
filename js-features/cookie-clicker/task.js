@@ -14,7 +14,7 @@ tastyCookie.onclick = function (){
   let newClick = new Date;
   if(lastClick !== undefined){
     const clickSpeed = document.getElementById('clicker__speed');
-    clickSpeed.textContent = (1000 / (newClick - lastClick)).toFixed(2);
+    clickSpeed.textContent = ( 1000 / (newClick - lastClick) ).toFixed(2);
     console.log(newClick - lastClick);
   }
   lastClick = new Date;
